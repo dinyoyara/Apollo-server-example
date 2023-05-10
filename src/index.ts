@@ -1,15 +1,15 @@
-import { ApolloServer } from "@apollo/server";
-import { startStandaloneServer } from "@apollo/server/standalone";
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
 
 const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
+    {
+        title: 'The Awakening',
+        author: 'Kate Chopin'
+    },
+    {
+        title: 'City of Glass',
+        author: 'Paul Auster'
+    }
 ];
 
 const typeDefs = `#graphql
@@ -23,16 +23,16 @@ const typeDefs = `#graphql
 `;
 
 const resolvers = {
-  Query: {
-    books: () => books,
-  },
+    Query: {
+        books: () => books
+    }
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });
 const { url } = await startStandaloneServer(server, {
-  listen: {
-    port: 9000,
-  },
+    listen: {
+        port: 9000
+    }
 });
 
 console.log(`server running at ${url}`);
